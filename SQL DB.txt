@@ -16,7 +16,6 @@
 	AVG(FullChargeCapacity) as Average_Full_Charge_Capacity,
 	AVG(ChargePercentage) as Average_Charge_Percentage,
 	AVG(ChargeRate) as Average_Charge_Rate,
-	Round(COUNT(RecordTime) * 0.25, 0) as Active_Minutes
 	from batteryData
 	group by
 	DATEPART(year, RecordTime),
