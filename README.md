@@ -1,5 +1,5 @@
 # Battery-Charge-Monitor-Windows
 Windows app to monitor battery charge
 
-1. Battery Charge Monitor folder contains Windows Service project to gather battery data on fixed time intervals and store it to SQL Server DB.
-2. BatteryStatisticsUI contains the UI, made using WPF. It fetches and processes data from SQL Server DB.
+1. BatteryChargeMonitorService folder contains program for Windows Service to fetch battery information and store it to SQLite database. <br>
+2. BatteryChargeMonitorUI folder contains program for WPF UI that fetches data from SQLite database and processes and displays data on click of a button.
