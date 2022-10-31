@@ -97,9 +97,9 @@ namespace BatteryChargeMonitorUI
                     }
                     else 
                     {
-                        if(currentStatus == "Discharging" && (currentRecordTime - previousRecordTime).TotalMinutes <= 1)
+                        if(currentStatus == "Discharging")
                         {
-                            duration += 1;
+                            duration += (int)(currentRecordTime.AddMinutes(-currentRecordTime.Minute) - previousRecordTime).TotalMinutes;
                         }
 
                         displayTable.Rows.Add(currentRecordTime.Date.ToString("dd-MM-yyyy"), currentHour, discharge, duration);
@@ -107,6 +107,12 @@ namespace BatteryChargeMonitorUI
                         duration = 0;
                         discharge = 0;
                         currentHour = currentRecordTime.Hour;
+                        
+                        if (currentStatus == "Discharging" && previousStatus == "Discharging" && previousLevel >= currentLevel)
+                        {
+                            duration += (int)(currentRecordTime - currentRecordTime.AddMinutes(-currentRecordTime.Minute)).TotalMinutes;
+                            discharge += previousLevel - currentLevel;
+                        }  
 
                     }
 
