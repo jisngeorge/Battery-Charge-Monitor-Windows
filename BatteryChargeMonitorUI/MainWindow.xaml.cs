@@ -97,7 +97,7 @@ namespace BatteryChargeMonitorUI
                     }
                     else 
                     {
-                        if(currentStatus == "Discharging")
+                        if(currentStatus == "Discharging" && currentLevel <= previousLevel)
                         {
                             duration += (int)(currentRecordTime.AddMinutes(-currentRecordTime.Minute) - previousRecordTime).TotalMinutes;
                         }
